@@ -28,8 +28,8 @@ class OTServStatus {
 			fclose($Socket);
 
 			preg_match('/players online="(\d+)" max="(\d+)"/', $SocketData, $matches);
-			$this->PlayersOnline = $matches[1];
-			$this->MaxPlayers = $matches[2];
+			$this->Players = $matches[1];
+			$this->PlayersMax = $matches[2];
 
 			preg_match('/uptime="(\d+)"/', $SocketData, $matches);
 			$this->UptimeHour = floor($matches[1] / 3600);
@@ -92,13 +92,13 @@ class OTServStatus {
 	}
 	
 	function Players() {
-		$Players = (int) $this->PlayersOnline;
+		$Players = (int) $this->Players;
 		return (!$Players ? 0 : $Players);
 	}
 	
-	function MaxPlayers() {
-		$MaxPlayers = (int) $this->MaxPlayers;
-		return (!$MaxPlayers ? 0 : $MaxPlayers);
+	function PlayersMax() {
+		$PlayersMax = (int) $this->PlayersMax;
+		return (!$PlayersMax ? 0 : $PlayersMax);
 	}
 	
 	function MapWidth() {
